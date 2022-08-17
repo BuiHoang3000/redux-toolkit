@@ -3,14 +3,15 @@ import { Radio } from '../../templates/Radio';
 
 const Filters = () => {
   return (
-    <div className='p-5 text-left'>
+    <div className='p-5'>
       <Input placeholder='Search todo...' />
 
       {/* Radio */}
       <div className='mt-3'>
         <h5>Filter By Status</h5>
-        <Radio id='html' name='radio' label='HTML' />
-        <Radio id='react' name='radio' label='React' />
+        <Radio id='hight' name='status' label='Hight' color='red' />
+        <Radio id='medium' name='status' label='Medium' color='blue' />
+        <Radio id='low' name='status' label='Low' color='gray' />
       </div>
     </div>
   );

@@ -2,10 +2,17 @@ type RadioProps = {
   id: string;
   name: string;
   label: string;
+  color?: 'red' | 'blue' | 'gray';
+};
+
+const colorConstant = {
+  red: 'bg-red-500',
+  blue: 'bg-blue-500',
+  gray: 'bg-gray-500',
 };
 
 const Radio = (props: RadioProps) => {
-  const { id, name, label } = props;
+  const { id, name, label, color = 'gray' } = props;
   return (
     <div className='inline-flex items-center'>
       <label className='relative flex items-center cursor-pointer p-3 rounded-full'>
@@ -17,7 +24,7 @@ const Radio = (props: RadioProps) => {
         />
       </label>
       <label
-        className='text-gray-700 font-light select-none cursor-pointer mt-px'
+        className={`${colorConstant[color]} font-light select-none cursor-pointer mt-px px-2 text-white rounded-lg`}
         htmlFor={id}
       >
         {label}
