@@ -1,10 +1,17 @@
+import React from 'react';
 import { Input } from '../../templates/Input';
 import { Radio } from '../../templates/Radio';
 
 const Filters = () => {
+  const [search, setSearch] = React.useState('');
+
   return (
     <div className='p-5'>
-      <Input placeholder='Search todo...' />
+      <Input
+        placeholder='Search todo...'
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
 
       {/* Radio */}
       <div className='mt-3'>

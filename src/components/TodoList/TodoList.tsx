@@ -14,9 +14,9 @@ const TodoList = () => {
   const todoList = useSelector((state: TodoSliceType) => state.todoList);
   const [todoName, setTodoName] = React.useState('');
 
-  React.useEffect(() => {
-    dispatch(fetchTodos() as any);
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch(fetchTodos() as any);
+  // }, []);
 
   const handleAddTodo = async () => {
     setTodoName('');
