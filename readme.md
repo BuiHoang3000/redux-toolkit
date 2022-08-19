@@ -1,3 +1,5 @@
+BE - server_blog - (Nodejs - Mysql)
+
 yarn create vite todo-app --template react-ts
 
 yarn add @reduxjs/toolkit
