@@ -2,7 +2,7 @@ export type TodoType = {
   id: string;
   name: string;
   priority: 'high' | 'medium' | 'low';
-  completed: boolean;
+  complete: string;
 };
 
 export type TodoSliceType = {
