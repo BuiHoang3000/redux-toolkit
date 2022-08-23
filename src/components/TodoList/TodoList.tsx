@@ -8,15 +8,14 @@ import { Input } from '../../templates/Input';
 import { TodoSliceType, TodoType } from '../../types';
 import Todo from '../Todo/Todo';
 import { addNewTodo, fetchTodos } from './todoListSlice';
+import useAxios from '../../hooks/useAxios';
 
 const TodoList = () => {
   const dispatch = useDispatch();
   const todoList = useSelector((state: TodoSliceType) => state.todoList);
   const [todoName, setTodoName] = React.useState('');
 
-  // React.useEffect(() => {
-  //   dispatch(fetchTodos() as any);
-  // }, []);
+  const { status, data, error } = useAxios('/todo');
 
   const handleAddTodo = async () => {
     setTodoName('');
