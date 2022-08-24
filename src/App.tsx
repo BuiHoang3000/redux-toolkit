@@ -1,3 +1,4 @@
+import { Toast } from './components/Toast';
 import './App.css';
 import { Filters } from './components/Filters';
 import { TodoList } from './components/TodoList';
@@ -9,6 +10,7 @@ function App() {
       <Filters />
       <hr className='w-[70%] my-0 mx-auto' />
       <TodoList />
+      <Toast />
     </div>
   );
 }

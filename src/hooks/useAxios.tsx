@@ -1,6 +1,8 @@
 import { Toast } from '../components/Toast';
 import React from 'react';
 import instance from '../../axios';
+import store from '../redux/store';
+import { hiddenMessage, showMessage } from '../components/Toast/toastSlice';
 
 type State<T> = {
   status: 'idle' | 'loading' | 'fetched' | 'error';
@@ -71,27 +73,28 @@ function useAxios<T = unknown>(
             if (cancelRequest.current) return;
 
             dispatch({ type: 'fetched', payload: response.data });
-            <Toast
-              type='success'
-              label='Success'
-              message={response.data.message}
-            />;
+            store.dispatch(
+              showMessage({
+                title: 'Error',
+                message: 'Message',
+                id: 1,
+                type: 'error',
+              }),
+            );
+            setTimeout(() => {
+              store.dispatch(hiddenMessage({ id: 1 }));
+            }, 3000);
           } else {
             if (cancelRequest.current) return;
-            <Toast
-              type='error'
-              label='Error'
-              message={response.data.message}
-            />;
           }
         })
         .catch((error) => {
           if (cancelRequest.current) return;
-          <Toast type='error' label='Error' message={error} />;
         });
     };
 
-    void setTimeout(() => fetchData(), 3000);
+    void fetchData();
+    // void setTimeout(() => fetchData(), 3000);
 
     // Use the cleanup function for avoiding a possibly...
     // ...state update after the component was unmounted
