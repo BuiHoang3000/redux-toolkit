@@ -73,16 +73,17 @@ function useAxios<T = unknown>(
             if (cancelRequest.current) return;
 
             dispatch({ type: 'fetched', payload: response.data });
+            const id = new Date().getTime();
             store.dispatch(
               showMessage({
                 title: 'Error',
                 message: 'Message',
-                id: 1,
+                id,
                 type: 'error',
               }),
             );
             setTimeout(() => {
-              store.dispatch(hiddenMessage({ id: 1 }));
+              store.dispatch(hiddenMessage({ id }));
             }, 3000);
           } else {
             if (cancelRequest.current) return;

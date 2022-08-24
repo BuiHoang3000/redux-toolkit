@@ -1,1 +1,1 @@
-export const getToasts = (state: any) => state.toast;
+export const getToasts = (state: any) => state.toast.messages;
