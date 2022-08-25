@@ -1,4 +1,3 @@
-import { Toast } from '../components/Toast';
 import React from 'react';
 import instance from '../../axios';
 import store from '../redux/store';
@@ -18,6 +17,25 @@ type Action<T> =
   | { type: 'error'; payload: Error };
 
 type Method = 'get' | 'post' | 'put' | 'patch' | 'delete';
+
+const handleToast = (
+  title: string,
+  message: string,
+  type: 'success' | 'error',
+) => {
+  const id = new Date().getTime();
+  store.dispatch(
+    showMessage({
+      title,
+      message,
+      id,
+      type,
+    }),
+  );
+  setTimeout(() => {
+    store.dispatch(hiddenMessage({ id }));
+  }, 3000);
+};
 
 function useAxios<T = unknown>(
   url: string,
@@ -68,28 +86,33 @@ function useAxios<T = unknown>(
         data: dataRequest,
       })
         .then((response) => {
-          if (response.data.success) {
+          if (response.data?.success) {
             cache.current[url] = response.data;
             if (cancelRequest.current) return;
 
             dispatch({ type: 'fetched', payload: response.data });
-            const id = new Date().getTime();
-            store.dispatch(
-              showMessage({
-                title: 'Error',
-                message: 'Message',
-                id,
-                type: 'error',
-              }),
+            handleToast(
+              'Success',
+              response.data.message ?? 'Call api success',
+              'success',
             );
-            setTimeout(() => {
-              store.dispatch(hiddenMessage({ id }));
-            }, 3000);
           } else {
+            dispatch({ type: 'error', payload: response.data?.message });
+            handleToast(
+              'Error',
+              response.data?.message ?? 'Call api error',
+              'error',
+            );
             if (cancelRequest.current) return;
           }
         })
         .catch((error) => {
+          dispatch({ type: 'error', payload: error as Error });
+          handleToast(
+            'Error',
+            error?.response?.data?.message ?? 'Api error',
+            'error',
+          );
           if (cancelRequest.current) return;
         });
     };

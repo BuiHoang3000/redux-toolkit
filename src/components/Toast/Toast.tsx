@@ -86,7 +86,6 @@ const Toast = () => {
             message={mess.message}
           />
         ))}
-      {/* <ToastShow type='success' title='Success' message='Message' /> */}
     </>
   );
 };
