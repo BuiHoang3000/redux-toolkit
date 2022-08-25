@@ -1,9 +1,8 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 //
 import instance from '~/axios';
 import { hiddenMessage, showMessage } from '~/components/Toast';
-import store from '~/redux/store';
-
 type State<T> = {
   status: 'idle' | 'loading' | 'fetched' | 'error';
   data?: T;
@@ -19,30 +18,12 @@ type Action<T> =
 
 type Method = 'get' | 'post' | 'put' | 'patch' | 'delete';
 
-const handleToast = (
-  title: string,
-  message: string,
-  type: 'success' | 'error',
-) => {
-  const id = new Date().getTime();
-  store.dispatch(
-    showMessage({
-      title,
-      message,
-      id,
-      type,
-    }),
-  );
-  setTimeout(() => {
-    store.dispatch(hiddenMessage({ id }));
-  }, 3000);
-};
-
 function useAxios<T = unknown>(
   url: string,
   method: Method = 'get',
   dataRequest?: T,
 ): State<T> {
+  const dispatchStr = useDispatch();
   const cache = React.useRef<Cache<T>>({});
 
   // Used to prevent state update if the component is unmounted
@@ -52,6 +33,25 @@ function useAxios<T = unknown>(
     status: 'idle',
     data: undefined,
     error: undefined,
+  };
+
+  const handleToast = (
+    title: string,
+    message: string,
+    type: 'success' | 'error',
+  ) => {
+    const id = new Date().getTime();
+    dispatchStr(
+      showMessage({
+        title,
+        message,
+        id,
+        type,
+      }),
+    );
+    setTimeout(() => {
+      dispatchStr(hiddenMessage({ id }));
+    }, 3000);
   };
 
   // Keep state logic separated
