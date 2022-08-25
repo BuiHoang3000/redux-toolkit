@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getToasts } from '../../redux/selector';
+import { getToasts } from '~/redux/selector';
 
 export type ToastType = {
   type: 'success' | 'error';

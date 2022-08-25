@@ -1,6 +1,6 @@
 import React from 'react';
-import { Input } from '../../templates/Input';
-import { Radio } from '../../templates/Radio';
+import { Input } from '~/templates/Input';
+import { Radio } from '~/templates/Radio';
 
 const Filters = () => {
   const [search, setSearch] = React.useState('');

@@ -1,7 +1,8 @@
 import React from 'react';
-import instance from '../../axios';
-import store from '../redux/store';
-import { hiddenMessage, showMessage } from '../components/Toast/toastSlice';
+//
+import instance from '~/axios';
+import { hiddenMessage, showMessage } from '~/components/Toast';
+import store from '~/redux/store';
 
 type State<T> = {
   status: 'idle' | 'loading' | 'fetched' | 'error';

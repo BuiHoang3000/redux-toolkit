@@ -1,6 +1,6 @@
-import { TodoType } from 'types';
-import { Checkbox } from '../../templates/Checkbox';
-import { Chip } from '../../templates/Chip';
+import { Checkbox } from '~/templates/Checkbox';
+import { Chip } from '~/templates/Chip';
+import { TodoType } from '~/types';
 
 const priorityColorMapping = {
   high: 'red',
