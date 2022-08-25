@@ -1,34 +1,25 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 //
 import useAxios from '~/hooks/useAxios';
-import { Input } from '~/templates/Input';
+import { Spinner } from '~/templates/Spinner';
 import { TodoType } from '~/types';
 //
 import { Todo } from '../Todo';
+import AddTodo from './AddTodo';
 
 const TodoList = () => {
-  const dispatch = useDispatch();
-  const [todoName, setTodoName] = React.useState('');
+  // Init
+  const { status, data, fetchApi } = useAxios<TodoType>('/todo');
 
-  const { status, data, error } = useAxios('/todo');
+  // Handle get list todo
+  React.useEffect(() => {
+    fetchApi();
+  }, [fetchApi]);
 
-  // const handleAddTodo = async () => {
-  //   setTodoName('');
-  //   await dispatch(
-  //     addNewTodo({
-  //       id: uuidv4(),
-  //       name: todoName,
-  //       priority: 'medium',
-  //       complete: 'false',
-  //     }) as any,
-  //   );
-  //   await dispatch(fetchTodos() as any);
-  // };
-
-  // if (todoList.status === 'loading') {
-  //   return <Spinner />;
-  // }
+  // Show loading when call api
+  if (status === 'loading') {
+    return <Spinner />;
+  }
 
   return (
     <div>
@@ -44,14 +35,7 @@ const TodoList = () => {
             />
           ))}
       </div>
-      <div className='flex p-5'>
-        <Input
-          placeholder='Add todo...'
-          value={todoName}
-          onChange={(e) => setTodoName(e.target.value)}
-        />
-        {/* <Button label='Add' onClick={() => handleAddTodo()} /> */}
-      </div>
+      <AddTodo />
     </div>
   );
 };

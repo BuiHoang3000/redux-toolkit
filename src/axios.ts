@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const instance = axios.create({
+const axiosClient = axios.create({
   baseURL: import.meta.env.VITE_REACT_APP_BACKEND_URL,
 });
 
-instance.interceptors.response.use(
+axiosClient.interceptors.response.use(
   (response) => {
     return response;
   },
@@ -13,4 +13,4 @@ instance.interceptors.response.use(
   },
 );
 
-export default instance;
+export default axiosClient;
