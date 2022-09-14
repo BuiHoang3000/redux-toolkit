@@ -18,3 +18,17 @@ export type LayoutMenuNavbar = {
   levelOne?: boolean;
   child: LayoutMenuNavbar[];
 };
+
+export type NavbarItemProps = {
+  item: LayoutMenuNavbar;
+};
+
+export type MenuNavbarProps = {
+  data: LayoutMenuNavbar[];
+  open: boolean;
+  setOpen: (open: boolean) => void;
+};
+
+export type TreeNavbarProps = {
+  data: LayoutMenuNavbar[];
+};
