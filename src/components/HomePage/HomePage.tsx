@@ -8,9 +8,11 @@ const HomePage = () => {
       <CarouselContextProvider>
         <MainProductCarousel />
       </CarouselContextProvider>
-      <CarouselContextProvider>
-        <NewProductCarousel />
-      </CarouselContextProvider>
+      <div className='w-5/6 mx-auto'>
+        <CarouselContextProvider>
+          <NewProductCarousel />
+        </CarouselContextProvider>
+      </div>
     </div>
   );
 };

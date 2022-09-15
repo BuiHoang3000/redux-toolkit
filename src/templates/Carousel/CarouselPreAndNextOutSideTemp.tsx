@@ -1,18 +1,20 @@
 import { memo } from 'react';
 
-type CarouselPreAndNextTempProps = {
+type CarouselPreAndNextOutSideTempProps = {
   handlePrevious: () => void;
   handleNext: () => void;
 };
 
-const CarouselPreAndNextTemp = (props: CarouselPreAndNextTempProps) => {
+const CarouselPreAndNextOutSideTemp = (
+  props: CarouselPreAndNextOutSideTempProps,
+) => {
   const { handlePrevious, handleNext } = props;
 
   return (
     <>
-      <div className='absolute top-0 bottom-0 left-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline z-[1] w-1/6 text-white bg-none opacity-50 transition-opacity hover:opacity-90 focus:opacity-90'>
+      <div className='absolute top-0 bottom-0 -left-28 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline z-[1] text-white bg-none opacity-50 transition-opacity hover:opacity-90 focus:opacity-90'>
         <button
-          className='p-8 rounded-full'
+          className='p-8 w-24 h-24 bg-black'
           type='button'
           onClick={() => handlePrevious()}
         >
@@ -34,9 +36,9 @@ const CarouselPreAndNextTemp = (props: CarouselPreAndNextTempProps) => {
           </span>
         </button>
       </div>
-      <div className='absolute top-0 bottom-0 right-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline z-10 w-1/6 text-white bg-none opacity-50 transition-opacity hover:opacity-90 focus:opacity-90'>
+      <div className='absolute top-0 bottom-0 -right-28 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline z-10 text-white bg-none opacity-50 transition-opacity hover:opacity-90 focus:opacity-90'>
         <button
-          className='p-8 rounded-full'
+          className='p-8 w-24 h-24 bg-black'
           type='button'
           onClick={() => handleNext()}
         >
@@ -62,4 +64,4 @@ const CarouselPreAndNextTemp = (props: CarouselPreAndNextTempProps) => {
   );
 };
 
-export default memo(CarouselPreAndNextTemp);
+export default memo(CarouselPreAndNextOutSideTemp);

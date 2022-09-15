@@ -4,16 +4,14 @@ import carousel1 from '~/assets/images/home_new_carousel_1.png';
 import carousel2 from '~/assets/images/home_new_carousel_2.png';
 import {
   CarouselItem,
-  GO_TO_PAGE,
+  CarouselPreAndNextOutSideTemp,
   INIT_DATA,
   NEXT,
   PREVIOUS,
   useCarouselDispatch,
   useCarouselState,
 } from '~/templates/Carousel';
-import CarouselGoToPageTemp from '~/templates/Carousel/CarouselGoToPageTemp';
-import CarouselPreAndNextTemp from '~/templates/Carousel/CarouselPreAndNextTemp';
-import CarouselWrapper from '~/templates/Carousel/CarouselWrapper';
+import { CarouselWrapper } from '~/templates/Carousel';
 
 const listCarousels: CarouselItem[] = [
   {
@@ -44,22 +42,6 @@ const NewProductCarousel = () => {
     }
   }, [listCarousels, carouselDispatch]);
 
-  const goToPage = React.useCallback(
-    () => (
-      <CarouselGoToPageTemp
-        data={carouselState.data}
-        active={carouselState.current}
-        setActive={(index: number) => {
-          carouselDispatch({
-            type: GO_TO_PAGE,
-            goToPage: index,
-          });
-        }}
-      />
-    ),
-    [carouselState],
-  );
-
   const handlePrevious = React.useCallback(() => {
     carouselDispatch({ type: PREVIOUS });
   }, []);
@@ -69,14 +51,14 @@ const NewProductCarousel = () => {
   }, []);
 
   const preAndNext = () => (
-    <CarouselPreAndNextTemp
+    <CarouselPreAndNextOutSideTemp
       handlePrevious={handlePrevious}
       handleNext={handleNext}
     />
   );
 
   return (
-    <CarouselWrapper gotoPage={goToPage} previousAndNext={preAndNext}>
+    <CarouselWrapper previousAndNext={preAndNext}>
       <div className='w-full overflow-x-hidden'>
         <ul
           className='flex relative w-full'
@@ -90,13 +72,6 @@ const NewProductCarousel = () => {
           {carouselState.data.map((item: any) => (
             <li className='relative min-w-full' key={item.id}>
               <img src={item.url} className='w-full' />
-              <div
-                key={item.id}
-                className={`absolute text-center bottom-5 py-5 w-full text-white`}
-              >
-                <h5 className='text-xl'>{item.title}</h5>
-                <p>{item.content}</p>
-              </div>
             </li>
           ))}
         </ul>

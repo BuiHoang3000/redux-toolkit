@@ -4,6 +4,7 @@ import carousel1 from '~/assets/images/home_new_carousel_1.png';
 import carousel2 from '~/assets/images/home_new_carousel_2.png';
 import {
   CarouselItem,
+  CarouselWrapper,
   GO_TO_PAGE,
   INIT_DATA,
   NEXT,
@@ -13,7 +14,6 @@ import {
 } from '~/templates/Carousel';
 import CarouselGoToPageTemp from '~/templates/Carousel/CarouselGoToPageTemp';
 import CarouselPreAndNextTemp from '~/templates/Carousel/CarouselPreAndNextTemp';
-import CarouselWrapper from '~/templates/Carousel/CarouselWrapper';
 
 const listCarousels: CarouselItem[] = [
   {

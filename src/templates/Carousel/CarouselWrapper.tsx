@@ -7,11 +7,11 @@ import {
 
 type CarouselWrapperProps = {
   children: ReactNode;
-  gotoPage: () => JSX.Element;
-  previousAndNext: () => JSX.Element;
+  gotoPage?: () => JSX.Element;
+  previousAndNext?: () => JSX.Element;
 };
 
-const CarouselWrapper = (props: CarouselWrapperProps) => {
+export const CarouselWrapper = (props: CarouselWrapperProps) => {
   const { children, gotoPage, previousAndNext } = props;
   const carouselState = useCarouselState();
   const carouselDispatch = useCarouselDispatch();
@@ -40,12 +40,10 @@ const CarouselWrapper = (props: CarouselWrapperProps) => {
         {children}
 
         <>
-          {gotoPage()}
-          {previousAndNext()}
+          {gotoPage && gotoPage()}
+          {previousAndNext && previousAndNext()}
         </>
       </div>
     </div>
   );
 };
-
-export default CarouselWrapper;
