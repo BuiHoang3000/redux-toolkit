@@ -13,21 +13,23 @@ const MobileMenuNavbar = (props: MenuNavbarProps) => {
   return (
     <div className='md:hidden'>
       {open && (
-        <div className='absolute top-0 right-0 min-w-[350px] min-h-screen p-4 flex flex-col bg-black opacity-90'>
+        <div className='absolute top-0 right-0 min-w-[350px] min-h-screen p-4 flex flex-col bg-black opacity-90 z-50'>
           {/* Button close */}
           <div className='mb-8'>
             <button
               className={cx(
-                'outline-none focus:outline-none px-3 py-1 hover:bg-gray-200 hover:border-gray-800 border-transparent border-2 rounded-md flex items-center bg-white float-right'
+                'outline-none focus:outline-none px-3 py-1 hover:bg-gray-200 hover:border-gray-800 border-transparent border-2 rounded-md flex items-center bg-white float-right',
               )}
-              onClick={() => setOpen(!open)}>
+              onClick={() => setOpen(!open)}
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
                 viewBox='0 0 24 24'
                 strokeWidth={1.5}
                 stroke='currentColor'
-                className='w-6 h-6'>
+                className='w-6 h-6'
+              >
                 <path
                   strokeLinecap='round'
                   strokeLinejoin='round'
