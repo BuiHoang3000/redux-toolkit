@@ -78,8 +78,8 @@ const NewProductCarousel = () => {
   return (
     <CarouselWrapper gotoPage={goToPage} previousAndNext={preAndNext}>
       <div className='w-full overflow-x-hidden'>
-        <div
-          className='flex'
+        <ul
+          className='flex relative w-full'
           style={{
             transform: `translate3d(-${
               carouselState.current * 100
@@ -88,22 +88,19 @@ const NewProductCarousel = () => {
           }}
         >
           {carouselState.data.map((item: any) => (
-            <img src={item.url} key={item.id} className='w-full' />
+            <li className='relative min-w-full' key={item.id}>
+              <img src={item.url} className='w-full' />
+              <div
+                key={item.id}
+                className={`absolute text-center bottom-5 py-5 w-full text-white`}
+              >
+                <h5 className='text-xl'>{item.title}</h5>
+                <p>{item.content}</p>
+              </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-
-      {carouselState.data.map((item, index: number) => (
-        <div
-          key={item.id}
-          className={`hidden md:${
-            index === carouselState.current ? 'block' : 'hidden'
-          } absolute text-center right-[15%] left-[15%] bottom-5 py-5 text-white`}
-        >
-          <h5 className='text-xl'>{item.title}</h5>
-          <p>{item.content}</p>
-        </div>
-      ))}
     </CarouselWrapper>
   );
 };
