@@ -30,7 +30,7 @@ const listCarousels: CarouselItem[] = [
   },
 ];
 
-const Carousel = () => {
+const MainProductCarousel = () => {
   const carouselState = useCarouselState();
   const carouselDispatch = useCarouselDispatch();
 
@@ -78,8 +78,8 @@ const Carousel = () => {
   return (
     <CarouselWrapper gotoPage={goToPage} previousAndNext={preAndNext}>
       <div className='w-full overflow-x-hidden'>
-        <div
-          className='flex'
+        <ul
+          className='flex relative w-full'
           style={{
             transform: `translate3d(-${
               carouselState.current * 100
@@ -88,9 +88,11 @@ const Carousel = () => {
           }}
         >
           {carouselState.data.map((item: any) => (
-            <img src={item.url} key={item.id} className='w-full' />
+            <li className='relative min-w-full' key={item.id}>
+              <img src={item.url} className='w-full' />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
       {carouselState.data.map((item, index: number) => (
@@ -108,4 +110,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+export default MainProductCarousel;

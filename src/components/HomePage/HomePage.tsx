@@ -1,13 +1,16 @@
 import { CarouselContextProvider } from '~/templates/Carousel';
-import Carousel from './components/Carousel';
+import MainProductCarousel from './components/MainProductCarousel';
+import NewProductCarousel from './components/NewProductCarousel';
 
 const HomePage = () => {
   return (
     <div>
       <CarouselContextProvider>
-        <Carousel />
+        <MainProductCarousel />
       </CarouselContextProvider>
-      Home Page
+      <CarouselContextProvider>
+        <NewProductCarousel />
+      </CarouselContextProvider>
     </div>
   );
 };
