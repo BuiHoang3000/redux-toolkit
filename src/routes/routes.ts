@@ -1,5 +1,6 @@
+import Product from '~/components/Collections';
 import { HomePage } from '~/components/HomePage';
-import { TodoList } from '~/components/TodoList';
+import HeaderOnly from '~/layouts/HeaderOnly';
 import { RouteConfig } from '~/types/routeType';
 
 const routes = {
@@ -8,8 +9,8 @@ const routes = {
 };
 
 const publicRoutes: RouteConfig[] = [
-  { id: 1, path: routes.home, component: HomePage },
-  { id: 2, path: routes.product, component: TodoList },
+  { id: 1, path: routes.home, component: HomePage, layout: HeaderOnly },
+  { id: 2, path: routes.product, component: Product },
 ];
 
 const privateRoutes: RouteConfig[] = [];

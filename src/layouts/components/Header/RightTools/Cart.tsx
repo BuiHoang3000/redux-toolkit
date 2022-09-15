@@ -2,7 +2,7 @@ import Badge from '~/templates/Badge';
 
 const Cart = () => {
   return (
-    <button className='px-2 py-1 hover:bg-gray-200 hover:border-gray-400 border-transparent border-2 rounded-md'>
+    <button className='px-2 py-1 hover:bg-gray-200 hover:border-gray-400 border-transparent border-2 rounded-md z-50'>
       <svg
         xmlns='http://www.w3.org/2000/svg'
         fill='none'
