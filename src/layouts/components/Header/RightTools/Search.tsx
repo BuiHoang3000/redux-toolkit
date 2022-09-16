@@ -14,7 +14,7 @@ const Search = () => {
     <div className={cx('rounded-md relative', 'group')}>
       <span
         className={
-          'w-full outline-none focus:outline-none px-3 py-1 bg-white hover:bg-gray-200 hover:border-gray-400 border-transparent border-2 rounded-md flex items-center cursor-pointer'
+          'w-full outline-none focus:outline-none px-3 py-2 bg-white hover:bg-gray-200 hover:border-gray-400 border-transparent border-2 rounded-md flex items-center cursor-pointer'
         }
       >
         <svg

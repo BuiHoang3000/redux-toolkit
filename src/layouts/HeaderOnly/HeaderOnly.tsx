@@ -1,3 +1,5 @@
+import useWindowWide from '~/hooks/useWindowWide';
+//
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
@@ -6,10 +8,18 @@ type HeaderOnlyProps = {
 };
 
 const HeaderOnly = ({ children }: HeaderOnlyProps) => {
+  const width = useWindowWide();
+
   return (
     <div>
       <Header />
-      <div className='mt-[136px]'>{children}</div>
+      <div
+        className={`${
+          width <= 768 || width >= 910 ? 'mt-[75px]' : 'mt-[105px]'
+        }`}
+      >
+        {children}
+      </div>
       <Footer />
     </div>
   );

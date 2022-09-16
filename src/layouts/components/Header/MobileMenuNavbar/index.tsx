@@ -13,7 +13,7 @@ const MobileMenuNavbar = (props: MenuNavbarProps) => {
   return (
     <div className='md:hidden'>
       {open && (
-        <div className='absolute top-0 right-0 min-w-[350px] min-h-screen p-4 flex flex-col bg-black opacity-90 z-50'>
+        <div className='absolute top-0 right-0 min-w-[350px] min-h-screen p-4 flex flex-col bg-black opacity-90'>
           {/* Button close */}
           <div className='mb-8'>
             <button

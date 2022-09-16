@@ -234,7 +234,7 @@ const Header = () => {
   const [openMobileMenu, setOpenMobileMenu] = React.useState(false);
 
   return (
-    <div className='inline-flex items-center p-8 w-full fixed top-0 overflow-hidden bg-white z-[999]'>
+    <div className='inline-flex items-center p-3 w-full fixed top-0 bg-white z-[999]'>
       <div className='w-1/6'>
         <img src={logo} alt='Logo' />
       </div>

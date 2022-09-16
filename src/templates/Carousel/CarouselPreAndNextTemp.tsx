@@ -10,7 +10,7 @@ const CarouselPreAndNextTemp = (props: CarouselPreAndNextTempProps) => {
 
   return (
     <>
-      <div className='absolute top-0 bottom-0 left-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline z-[1] w-1/6 text-white bg-none opacity-50 transition-opacity hover:opacity-90 focus:opacity-90'>
+      <div className='absolute top-0 bottom-0 left-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline w-1/6 text-white bg-none opacity-50 transition-opacity hover:opacity-90 focus:opacity-90'>
         <button
           className='p-8 rounded-full'
           type='button'
@@ -34,7 +34,7 @@ const CarouselPreAndNextTemp = (props: CarouselPreAndNextTempProps) => {
           </span>
         </button>
       </div>
-      <div className='absolute top-0 bottom-0 right-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline z-10 w-1/6 text-white bg-none opacity-50 transition-opacity hover:opacity-90 focus:opacity-90'>
+      <div className='absolute top-0 bottom-0 right-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline w-1/6 text-white bg-none opacity-50 transition-opacity hover:opacity-90 focus:opacity-90'>
         <button
           className='p-8 rounded-full'
           type='button'

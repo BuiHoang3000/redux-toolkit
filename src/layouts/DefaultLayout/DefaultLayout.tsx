@@ -1,3 +1,5 @@
+import useWindowWide from '~/hooks/useWindowWide';
+//
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Sidebar from './Sidebar';
@@ -7,10 +9,16 @@ type DefaultLayoutProps = {
 };
 
 const DefaultLayout = ({ children }: DefaultLayoutProps) => {
+  const width = useWindowWide();
+
   return (
     <div>
       <Header />
-      <div className='mt-[136px] flex max-w-[1350px] mx-auto px-4'>
+      <div
+        className={`${
+          width <= 768 || width >= 910 ? 'mt-[75px]' : 'mt-[105px]'
+        } flex max-w-[1350px] mx-auto px-4`}
+      >
         <Sidebar />
         <div className='w-full'>{children}</div>
       </div>
