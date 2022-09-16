@@ -3,6 +3,7 @@ export type CarouselItem = {
   url: string;
   title?: string;
   content?: string;
+  price?: string;
 };
 
 type CarouselGoToPageTempProps = {

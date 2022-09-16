@@ -1,5 +1,6 @@
 import { ReactNode, useEffect } from 'react';
 import {
+  FULL,
   GO_TO_PAGE,
   useCarouselDispatch,
   useCarouselState,
@@ -21,7 +22,9 @@ export const CarouselWrapper = (props: CarouselWrapperProps) => {
       const timer = setInterval(() => {
         carouselDispatch({
           type: GO_TO_PAGE,
-          goToPage: (carouselState.current + 1) % carouselState.data.length,
+          goToPage:
+            (carouselState.current + 1) %
+            (carouselState.data.length - (carouselState.size || FULL)),
         });
       }, carouselState.timePlay);
 

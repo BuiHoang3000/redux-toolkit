@@ -30,6 +30,31 @@ const listCarousels: CarouselItem[] = [
   },
 ];
 
+type ListImageProps = {
+  data: CarouselItem[];
+};
+
+const ListImage = React.memo((props: ListImageProps) => {
+  const { data } = props;
+
+  return (
+    <>
+      {data.map((item: any) => (
+        <li className='relative min-w-full' key={item.id}>
+          <img src={item.url} className='w-full' />
+          <div
+            key={item.id}
+            className={`absolute text-center bottom-5 py-5 w-full text-white`}
+          >
+            <h5 className='text-xl'>{item.title}</h5>
+            <p>{item.content}</p>
+          </div>
+        </li>
+      ))}
+    </>
+  );
+});
+
 const MainProductCarousel = () => {
   const carouselState = useCarouselState();
   const carouselDispatch = useCarouselDispatch();
@@ -87,18 +112,7 @@ const MainProductCarousel = () => {
             transitionDuration: '350ms',
           }}
         >
-          {carouselState.data.map((item: any) => (
-            <li className='relative min-w-full' key={item.id}>
-              <img src={item.url} className='w-full' />
-              <div
-                key={item.id}
-                className={`absolute text-center bottom-5 py-5 w-full text-white`}
-              >
-                <h5 className='text-xl'>{item.title}</h5>
-                <p>{item.content}</p>
-              </div>
-            </li>
-          ))}
+          <ListImage data={[...carouselState.data] as CarouselItem[]} />
         </ul>
       </div>
     </CarouselWrapper>

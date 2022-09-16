@@ -10,6 +10,11 @@ export const INIT_DATA = 'INIT_DATA';
 export const PREVIOUS = 'PREVIOUS';
 export const NEXT = 'NEXT';
 export const GO_TO_PAGE = 'GO_TO_PAGE';
+export const RE_SIZE = 'RE_SIZE';
+
+export const FULL = 0;
+export const LARGE = 3;
+export const SMALL = 1;
 
 export type CarouselData = {
   data: {
@@ -19,10 +24,14 @@ export type CarouselData = {
   current: number;
   auto: boolean;
   timePlay?: number;
+  size?: number;
 };
 
 export type CarouselReducerProps = {
   initData?: any[];
+  auto?: boolean;
+  timePlay?: number;
+  size?: number;
   goToPage?: number;
   [k: string]: any;
 };
@@ -72,17 +81,26 @@ export const carouselReducerFn = (
           `Action type ${INIT_DATA} must go with initData array and auto boolean`,
         );
       }
-      return { ...state, data: action.initData, auto: action.auto };
+      return {
+        ...state,
+        data: action.initData,
+        auto: action.auto,
+        size: action.size || FULL,
+      };
     }
 
     case PREVIOUS: {
+      const length = state.data.length;
+      const size = state.size || FULL;
       const pageCurrent =
-        (state.current - 1 + state.data.length) % state.data.length;
+        (state.current - 1 + (length - size)) % (length - size);
       return { ...state, current: pageCurrent };
     }
 
     case NEXT: {
-      const pageCurrent = (state.current + 1) % state.data.length;
+      const length = state.data.length;
+      const size = state.size || FULL;
+      const pageCurrent = (state.current + 1) % (length - size);
       return { ...state, current: pageCurrent };
     }
 
@@ -98,6 +116,13 @@ export const carouselReducerFn = (
         );
       }
       return { ...state, current: action.goToPage };
+    }
+
+    case RE_SIZE: {
+      if (action.size === null || action.size === undefined) {
+        throw new Error(`Action type ${RE_SIZE} must go with size number`);
+      }
+      return { ...state, size: action.size, current: 0 };
     }
 
     default:

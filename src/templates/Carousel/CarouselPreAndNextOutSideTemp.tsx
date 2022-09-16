@@ -12,9 +12,9 @@ const CarouselPreAndNextOutSideTemp = (
 
   return (
     <>
-      <div className='absolute top-0 bottom-0 -left-28 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline z-[1] text-white bg-none opacity-50 transition-opacity hover:opacity-90 focus:opacity-90'>
+      <div className='absolute top-0 bottom-0 -left-8 md:-left-12 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline z-[1] text-white bg-none opacity-50 transition-opacity hover:opacity-90 focus:opacity-90'>
         <button
-          className='p-8 w-24 h-24 bg-black'
+          className='p-4 bg-black'
           type='button'
           onClick={() => handlePrevious()}
         >
@@ -36,9 +36,9 @@ const CarouselPreAndNextOutSideTemp = (
           </span>
         </button>
       </div>
-      <div className='absolute top-0 bottom-0 -right-28 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline z-10 text-white bg-none opacity-50 transition-opacity hover:opacity-90 focus:opacity-90'>
+      <div className='absolute top-0 bottom-0 -right-8 md:-right-12 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline z-10 text-white bg-none opacity-50 transition-opacity hover:opacity-90 focus:opacity-90'>
         <button
-          className='p-8 w-24 h-24 bg-black'
+          className='p-4 bg-black'
           type='button'
           onClick={() => handleNext()}
         >
