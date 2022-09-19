@@ -43,7 +43,6 @@ const ListImage = React.memo((props: ListImageProps) => {
         <li className='relative min-w-full' key={item.id}>
           <img src={item.url} className='w-full' />
           <div
-            key={item.id}
             className={`absolute text-center bottom-5 py-5 w-full text-white`}
           >
             <h5 className='text-xl'>{item.title}</h5>

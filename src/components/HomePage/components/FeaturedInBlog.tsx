@@ -10,8 +10,9 @@ import useWindowWide from '~/hooks/useWindowWide';
 import {
   CarouselItem,
   CarouselPreAndNextOutSideTemp,
+  CarouselWrapper,
   INIT_DATA,
-  LARGE,
+  MEDIUM,
   NEXT,
   PREVIOUS,
   RE_SIZE,
@@ -19,7 +20,6 @@ import {
   useCarouselDispatch,
   useCarouselState,
 } from '~/templates/Carousel';
-import { CarouselWrapper } from '~/templates/Carousel';
 
 const listCarousels: CarouselItem[] = [
   {
@@ -59,9 +59,11 @@ const ListImage = React.memo((props: ListImageProps) => {
   return (
     <>
       {data.map((item: any) => (
-        <li className='min-w-[50%] md:min-w-[25%] p-1' key={item.id}>
-          <img src={item.url} className='w-full' />
-          <div key={item.id} className={`text-center bottom-5 py-2 w-full`}>
+        <li className='min-w-[50%] md:min-w-[33.33%] px-1' key={item.id}>
+          <div className='h-4/5'>
+            <img src={item.url} className='w-full h-full object-cover' />
+          </div>
+          <div className={`text-center bottom-5 py-2 w-full`}>
             <h5 className='text-xs text-gray-500'>{item.title}</h5>
           </div>
         </li>
@@ -81,14 +83,14 @@ const FeaturedInBlog = () => {
         type: INIT_DATA,
         initData: listCarousels,
         auto: false,
-        size: SMALL,
+        size: MEDIUM,
       });
     }
   }, [listCarousels, carouselDispatch]);
 
   React.useEffect(() => {
-    if (width > WIDTH_MD && carouselState.size !== LARGE) {
-      carouselDispatch({ type: RE_SIZE, size: LARGE });
+    if (width > WIDTH_MD && carouselState.size !== MEDIUM) {
+      carouselDispatch({ type: RE_SIZE, size: MEDIUM });
     }
     if (width < WIDTH_MD && carouselState.size !== SMALL) {
       carouselDispatch({ type: RE_SIZE, size: SMALL });

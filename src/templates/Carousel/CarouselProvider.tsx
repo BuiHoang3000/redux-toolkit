@@ -14,6 +14,7 @@ export const RE_SIZE = 'RE_SIZE';
 
 export const FULL = 0;
 export const LARGE = 3;
+export const MEDIUM = 2;
 export const SMALL = 1;
 
 export type CarouselData = {

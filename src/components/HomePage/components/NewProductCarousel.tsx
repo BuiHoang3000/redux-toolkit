@@ -73,7 +73,7 @@ const ListImage = React.memo((props: ListImageProps) => {
       {data.map((item: any) => (
         <li className='min-w-[50%] md:min-w-[25%] p-1' key={item.id}>
           <img src={item.url} className='w-full' />
-          <div key={item.id} className={`text-center bottom-5 py-2 w-full`}>
+          <div className={`text-center bottom-5 py-2 w-full`}>
             <h5 className='text-xs text-gray-500'>{item.title}</h5>
             <p className='text-gray-900 font-semibold'>{item.price}₫</p>
           </div>
