@@ -29,7 +29,7 @@ const Product = () => {
       tableDispatch({
         type: INIT_DATA,
         initData: data,
-        total: 2,
+        total: 20,
       });
     }
   }, [data, tableDispatch]);

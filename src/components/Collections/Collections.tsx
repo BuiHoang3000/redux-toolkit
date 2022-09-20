@@ -3,7 +3,7 @@ import Product from './Product';
 
 const Collection = () => {
   return (
-    <div className='bg-gray-500'>
+    <div>
       <TableContextProvider>
         <Product />
       </TableContextProvider>

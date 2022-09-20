@@ -96,7 +96,7 @@ export const TableReducerFn = (state: TableData, action: TableReducerProps) => {
           `Action type ${GO_TO_PAGE} must go with page number. Error: ${action.goToPage}`,
         );
       }
-      if (action.goToPage < 0 || action.goToPage > state.data.length) {
+      if (action.goToPage < 0 || action.goToPage > state.total) {
         throw new Error(
           `Action type ${GO_TO_PAGE} must go with page number more than 0 or less than length data`,
         );
