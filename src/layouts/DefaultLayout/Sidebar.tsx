@@ -223,7 +223,7 @@ const NavbarItem = (props: NavbarItemProps) => {
     <div>
       <button
         className={
-          'inline-flex items-center relative outline-none focus:outline-none px-3 py-1 my-1 after:absolute after:bg-white after:w-full after:h-0.5 after:left-0 after:bottom-0 after:origin-bottom-right after:transition-transform hover:after:origin-bottom-left after:scale-x-0 hover:after:scale-x-100'
+          'inline-flex items-center relative outline-none focus:outline-none py-1 my-1 after:absolute after:bg-white after:w-full after:h-0.5 after:left-0 after:bottom-0 after:origin-bottom-right after:transition-transform hover:after:origin-bottom-left after:scale-x-0 hover:after:scale-x-100'
         }
         onClick={() => setIsShowChild(!isShowChild)}
       >

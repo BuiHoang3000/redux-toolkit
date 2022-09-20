@@ -18,6 +18,7 @@ export type TableData = {
     id: string | number;
     [k: string]: any;
   }[];
+  title: string;
   current: number;
   filter?: any[];
   sort?: string;
@@ -27,6 +28,7 @@ export type TableData = {
 
 export type TableReducerProps = {
   initData?: any[];
+  title: string;
   total?: number;
   perPage?: number;
   filter?: any;
@@ -75,6 +77,7 @@ export const TableReducerFn = (state: TableData, action: TableReducerProps) => {
       return {
         ...state,
         data: action.initData,
+        title: action.title,
         current: 1,
         total: action.total,
         perPage: action.perPage || 10,
@@ -130,6 +133,7 @@ export const TableContextProvider = ({
 }: TableContextProviderProps) => {
   const [state, dispatch] = useReducer(reducerFunc || TableReducerFn, {
     data: [],
+    title: '',
     current: 1,
     total: 1,
     perPage: 10,

@@ -28,17 +28,16 @@ const Product = () => {
     if (data && data.length > 0) {
       tableDispatch({
         type: INIT_DATA,
+        title: 'DRESS',
         initData: data,
         total: 20,
       });
     }
   }, [data, tableDispatch]);
 
-  const filter = () => <div>Filter</div>;
-
   return (
     <div>
-      <TableWrapper filter={filter}>product</TableWrapper>
+      <TableWrapper>product</TableWrapper>
     </div>
   );
 };

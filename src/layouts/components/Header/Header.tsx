@@ -234,23 +234,25 @@ const Header = () => {
   const [openMobileMenu, setOpenMobileMenu] = React.useState(false);
 
   return (
-    <div className='inline-flex items-center p-3 w-full fixed top-0 bg-white z-[999]'>
-      <div className='w-1/6'>
-        <img src={logo} alt='Logo' />
-      </div>
-      <div className='inline-flex items-center flex-wrap justify-end w-full'>
-        <MenuNavbar data={menu_navbar} />
-        <RightTools
-          data={[]}
+    <div className='w-full fixed top-0 py-3 bg-white z-[999] text-center xl:px-3'>
+      <div className='inline-flex items-center w-full px-4 mx-auto xl:w-[1300px]'>
+        <div className='w-1/6'>
+          <img src={logo} alt='Logo' />
+        </div>
+        <div className='inline-flex items-center flex-wrap justify-end w-5/6'>
+          <MenuNavbar data={menu_navbar} />
+          <RightTools
+            data={[]}
+            open={openMobileMenu}
+            setOpen={setOpenMobileMenu}
+          />
+        </div>
+        <MobileMenuNavbar
+          data={menu_navbar}
           open={openMobileMenu}
           setOpen={setOpenMobileMenu}
         />
       </div>
-      <MobileMenuNavbar
-        data={menu_navbar}
-        open={openMobileMenu}
-        setOpen={setOpenMobileMenu}
-      />
     </div>
   );
 };

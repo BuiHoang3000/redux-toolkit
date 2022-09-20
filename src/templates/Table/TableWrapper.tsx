@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import TableFilterTemp from './TableFilterTemp';
 import TablePaginationTemp from './TablePaginationTemp';
 import { useTableState } from './TableProvider';
 
@@ -15,7 +16,7 @@ export const TableWrapper = (props: TableWrapperProps) => {
   return (
     <div>
       <div className='relative'>
-        {filter && filter()}
+        {filter ? filter() : <TableFilterTemp title={tableState.title} />}
         {children}
         {pagination ? (
           pagination()

@@ -15,7 +15,7 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
     <div>
       <Header />
       <div
-        className={`${
+        className={`md:mx-auto xl:w-[1300px] ${
           width <= 768 || width >= 910 ? 'mt-[75px]' : 'mt-[105px]'
         } flex max-w-[1350px] mx-auto px-4`}
       >
