@@ -18,20 +18,25 @@ export type TableData = {
     id: string | number;
     [k: string]: any;
   }[];
-  title: string;
+  title?: string;
   current: number;
-  filter?: any[];
+  filter?: {
+    [k: string]: any;
+  };
   sort?: string;
   perPage: number;
   total: number;
 };
 
 export type TableReducerProps = {
+  type: string;
   initData?: any[];
-  title: string;
+  title?: string;
   total?: number;
   perPage?: number;
-  filter?: any;
+  filter?: {
+    [k: string]: any;
+  };
   sort?: any;
   goToPage?: number;
   [k: string]: any;
@@ -108,16 +113,10 @@ export const TableReducerFn = (state: TableData, action: TableReducerProps) => {
     }
 
     case FILTER: {
-      if (action.filter === null || action.filter === undefined) {
-        throw new Error(`Action type ${FILTER} must go with filter condition`);
-      }
       return { ...state, filter: action.filter, current: 1 };
     }
 
     case SORT: {
-      if (action.sort === null || action.sort === undefined) {
-        throw new Error(`Action type ${SORT} must go with filter condition`);
-      }
       return { ...state, sort: action.sort, current: 1 };
     }
 

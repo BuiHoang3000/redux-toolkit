@@ -45,9 +45,9 @@ const TablePaginationTemp = (props: TablePaginationTempProps) => {
         page.push(
           <button
             key={`page_${i}`}
-            className={`px-4 py-2 mx-1 border ${
+            className={`text-xs h-7 px-2 sm:px-4 sm:text-base sm:h-10 mx-1 border ${
               i === current ? 'bg-black text-white' : 'bg-gray-100'
-            } font-bold hover:bg-black hover:text-white`}
+            } font-bold hover:bg-black hover:text-white rounded-md`}
             onClick={() => handleGoToPage(i)}
           >
             {i}
@@ -60,9 +60,9 @@ const TablePaginationTemp = (props: TablePaginationTempProps) => {
           page.push(
             <button
               key={`page_${i}`}
-              className={`px-4 py-2 mx-1 border ${
+              className={`text-xs h-7 px-2 sm:px-4 sm:text-base sm:h-10 mx-1 border ${
                 i === current ? 'bg-black text-white' : 'bg-gray-100'
-              } font-bold hover:bg-black hover:text-white`}
+              } font-bold hover:bg-black hover:text-white rounded-md`}
               onClick={() => handleGoToPage(i)}
             >
               {i}
@@ -73,7 +73,10 @@ const TablePaginationTemp = (props: TablePaginationTempProps) => {
 
       if (current < total - 3) {
         page.push(
-          <span key='page_dot' className='px-4 py-2 mx-1'>
+          <span
+            key='page_dot'
+            className='text-xs h-7 px-2 sm:px-4 sm:text-base sm:h-10 mx-1'
+          >
             ...
           </span>,
         );
@@ -83,7 +86,7 @@ const TablePaginationTemp = (props: TablePaginationTempProps) => {
         page.push(
           <button
             key='page_total'
-            className='px-4 py-2 mx-1 border font-bold bg-gray-100 hover:bg-black hover:text-white'
+            className='text-xs h-7 px-2 sm:px-4 sm:text-base sm:h-10 mx-1 border font-bold bg-gray-100 hover:bg-black hover:text-white rounded-md'
             onClick={() => handleGoToPage(total)}
           >
             {total}
@@ -96,7 +99,7 @@ const TablePaginationTemp = (props: TablePaginationTempProps) => {
       page.unshift(
         <button
           key='page_first'
-          className='px-4 py-2 mx-1 border bg-gray-100 hover:bg-black hover:text-white'
+          className='text-xs h-7 px-2 sm:px-4 sm:text-base sm:h-10 mx-1 border bg-gray-100 hover:bg-black hover:text-white rounded-md'
           onClick={() => handleGoToPage(1)}
         >
           <svg
@@ -116,7 +119,7 @@ const TablePaginationTemp = (props: TablePaginationTempProps) => {
         </button>,
         <button
           key='page_previous'
-          className='px-4 py-2 mx-1 border bg-gray-100 hover:bg-black hover:text-white'
+          className='text-xs h-7 px-2 sm:px-4 sm:text-base sm:h-10 mx-1 border bg-gray-100 hover:bg-black hover:text-white rounded-md'
           onClick={() => handlePreviousPage()}
         >
           <svg
@@ -141,7 +144,7 @@ const TablePaginationTemp = (props: TablePaginationTempProps) => {
       page.push(
         <button
           key='page_next'
-          className='px-4 py-2 mx-1 border bg-gray-100 hover:bg-black hover:text-white'
+          className='text-xs h-7 px-2 sm:px-4 sm:text-base sm:h-10 mx-1 border bg-gray-100 hover:bg-black hover:text-white rounded-md'
           onClick={() => handleNextPage()}
         >
           <svg
@@ -161,7 +164,7 @@ const TablePaginationTemp = (props: TablePaginationTempProps) => {
         </button>,
         <button
           key='page_end'
-          className='px-4 py-2 mx-1 border bg-gray-100 hover:bg-black hover:text-white'
+          className='text-xs h-7 px-2 sm:px-4 sm:text-base sm:h-10 mx-1 border bg-gray-100 hover:bg-black hover:text-white rounded-md'
           onClick={() => handleGoToPage(total)}
         >
           <svg
@@ -184,7 +187,7 @@ const TablePaginationTemp = (props: TablePaginationTempProps) => {
     return page;
   };
 
-  return <div className='flex justify-center'>{renderPagination()}</div>;
+  return <div className='flex justify-center my-8'>{renderPagination()}</div>;
 };
 
 export default React.memo(TablePaginationTemp);
