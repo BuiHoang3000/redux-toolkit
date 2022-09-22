@@ -3,7 +3,9 @@ import React from 'react';
 type TableFilterTempProps = {
   title: string;
   listFilter: any;
+  view: 'LARGE' | 'MEDIUM';
   handleSetFilter: (type: string, value: string[]) => void;
+  handleSetView: (type: 'LARGE' | 'MEDIUM') => void;
 };
 
 const SIZE_CLOTHES = 'size';
@@ -62,7 +64,7 @@ const PRICE = [
 
 const TableFilterTemp = (props: TableFilterTempProps) => {
   // Init
-  const { title, listFilter, handleSetFilter } = props;
+  const { title, listFilter, view, handleSetFilter, handleSetView } = props;
   const [showFilter, setShowFilter] = React.useState('');
 
   // Handle click filter button
@@ -259,7 +261,16 @@ const TableFilterTemp = (props: TableFilterTempProps) => {
           )}
         </div>
         <div className='min-w-[80px]'>
-          <button className='p-3 md:p-2 rounded-lg hover:bg-gray-300'>
+          <button
+            className={`p-3 md:p-2 rounded-lg hover:bg-gray-300 ${
+              view === 'LARGE' ? 'bg-gray-300' : ''
+            }`}
+            onClick={() => {
+              if (view !== 'LARGE') {
+                handleSetView('LARGE');
+              }
+            }}
+          >
             <svg
               xmlns='http://www.w3.org/2000/svg'
               fill='none'
@@ -275,7 +286,16 @@ const TableFilterTemp = (props: TableFilterTempProps) => {
               />
             </svg>
           </button>
-          <button className='p-3 md:p-2 rounded-lg hover:bg-gray-300'>
+          <button
+            className={`p-3 md:p-2 rounded-lg hover:bg-gray-300 ${
+              view === 'MEDIUM' ? 'bg-gray-300' : ''
+            }`}
+            onClick={() => {
+              if (view !== 'MEDIUM') {
+                handleSetView('MEDIUM');
+              }
+            }}
+          >
             <svg
               xmlns='http://www.w3.org/2000/svg'
               fill='none'

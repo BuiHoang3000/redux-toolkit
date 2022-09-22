@@ -1,5 +1,6 @@
 export type Clothes = {
   id: string | number;
-  name: string;
-  price: number;
+  url: string;
+  title: string;
+  price: string;
 };

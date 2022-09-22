@@ -1,7 +1,12 @@
 import { ReactNode } from 'react';
 import TableFilterTemp from './TableFilterTemp';
 import TablePaginationTemp from './TablePaginationTemp';
-import { FILTER, useTableDispatch, useTableState } from './TableProvider';
+import {
+  CHANGE_VIEW,
+  FILTER,
+  useTableDispatch,
+  useTableState,
+} from './TableProvider';
 
 type TableWrapperProps = {
   children: ReactNode;
@@ -26,6 +31,14 @@ export const TableWrapper = (props: TableWrapperProps) => {
     });
   };
 
+  // Handle event set view
+  const handleSetView = (type: 'LARGE' | 'MEDIUM') => {
+    tableDispatch({
+      type: CHANGE_VIEW,
+      view: type,
+    });
+  };
+
   return (
     <div>
       {filter ? (
@@ -34,7 +47,9 @@ export const TableWrapper = (props: TableWrapperProps) => {
         <TableFilterTemp
           title={tableState.title || ''}
           listFilter={tableState.filter}
+          view={tableState.view || 'LARGE'}
           handleSetFilter={handleSetFilter}
+          handleSetView={handleSetView}
         />
       )}
       {children}

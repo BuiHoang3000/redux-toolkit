@@ -12,6 +12,7 @@ export const NEXT_PAGE = 'NEXT_PAGE';
 export const GO_TO_PAGE = 'GO_TO_PAGE';
 export const FILTER = 'FILTER';
 export const SORT = 'SORT';
+export const CHANGE_VIEW = 'CHANGE_VIEW';
 
 export type TableData = {
   data: {
@@ -26,6 +27,7 @@ export type TableData = {
   sort?: string;
   perPage: number;
   total: number;
+  view?: 'LARGE' | 'MEDIUM';
 };
 
 export type TableReducerProps = {
@@ -39,6 +41,7 @@ export type TableReducerProps = {
   };
   sort?: any;
   goToPage?: number;
+  view?: 'LARGE' | 'MEDIUM';
   [k: string]: any;
 };
 
@@ -120,6 +123,10 @@ export const TableReducerFn = (state: TableData, action: TableReducerProps) => {
       return { ...state, sort: action.sort, current: 1 };
     }
 
+    case CHANGE_VIEW: {
+      return { ...state, view: action.view };
+    }
+
     default:
       return state;
   }
@@ -136,6 +143,7 @@ export const TableContextProvider = ({
     current: 1,
     total: 1,
     perPage: 10,
+    view: 'LARGE',
   });
 
   return (
