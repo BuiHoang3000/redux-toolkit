@@ -48,7 +48,9 @@ const TablePaginationTemp = (props: TablePaginationTempProps) => {
             className={`text-xs h-7 px-2 sm:px-4 sm:text-base sm:h-10 mx-1 border ${
               i === current ? 'bg-black text-white' : 'bg-gray-100'
             } font-bold hover:bg-black hover:text-white rounded-md`}
-            onClick={() => handleGoToPage(i)}
+            onClick={() => {
+              if (i !== current) handleGoToPage(i);
+            }}
           >
             {i}
           </button>,
@@ -63,7 +65,9 @@ const TablePaginationTemp = (props: TablePaginationTempProps) => {
               className={`text-xs h-7 px-2 sm:px-4 sm:text-base sm:h-10 mx-1 border ${
                 i === current ? 'bg-black text-white' : 'bg-gray-100'
               } font-bold hover:bg-black hover:text-white rounded-md`}
-              onClick={() => handleGoToPage(i)}
+              onClick={() => {
+                if (i !== current) handleGoToPage(i);
+              }}
             >
               {i}
             </button>,

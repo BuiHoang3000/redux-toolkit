@@ -2,53 +2,67 @@ import React from 'react';
 
 type TableFilterTempProps = {
   title: string;
-  handleSetFilter: (type: string, value: string) => void;
+  listFilter: any;
+  handleSetFilter: (type: string, value: string[]) => void;
 };
 
 const SIZE_CLOTHES = 'size';
 const COLOR_CLOTHES = 'color';
 const PRICE_CLOTHES = 'price';
 
-const SIZE = {
-  TWO: { key: 'SIZE_2', value: 'Size 2' },
-  FOUR: { key: 'SIZE_4', value: 'Size 4' },
-  SIX: { key: 'SIZE_6', value: 'Size 6' },
-  EIGHT: { key: 'SIZE_8', value: 'Size 8' },
-  TEN: { key: 'SIZE_10', value: 'Size 10' },
-  TWELVE: { key: 'SIZE_12', value: 'Size 12' },
-  FOUR_TEEN: { key: 'SIZE_14', value: 'Size 14' },
-  FREE_SIZE: { key: 'FREE_SIZE', value: 'Free size' },
-};
+const SIZE = [
+  { key: 'SIZE_2', value: 'Size 2' },
+  { key: 'SIZE_4', value: 'Size 4' },
+  { key: 'SIZE_6', value: 'Size 6' },
+  { key: 'SIZE_8', value: 'Size 8' },
+  { key: 'SIZE_10', value: 'Size 10' },
+  { key: 'SIZE_12', value: 'Size 12' },
+  { key: 'SIZE_14', value: 'Size 14' },
+  { key: 'FREE_SIZE', value: 'Free size' },
+];
 
-const COLOR = {
-  BLUE: 'BLUE',
-  RED: 'RED',
-  VIOLET: 'VIOLET',
-  YELLOW: 'YELLOW',
-  WHITE: 'WHITE',
-  BLACK: 'BLACK',
-  BROWN: 'BROWN',
-  PINK: 'PINK',
-  GRAY: 'GRAY',
-  GREEN: 'GREEN',
-};
+const COLOR = [
+  { key: 'BLUE', value: 'sky-500' },
+  { key: 'RED', value: 'red-600' },
+  { key: 'VIOLET', value: 'violet-700' },
+  { key: 'YELLOW', value: 'yellow-400' },
+  { key: 'WHITE', value: 'white' },
+  { key: 'BLACK', value: 'black' },
+  { key: 'BROWN', value: 'amber-900' },
+  { key: 'PINK', value: 'pink-600' },
+  { key: 'GRAY', value: 'gray-600' },
+  { key: 'GREEN', value: 'green-600' },
+];
 
-const PRICE = {
-  ALL: { key: 'ALL', value: 'All' },
-  LESS_THAN_500: { key: 'LESS_THAN_500', value: 'Less than 500.000đ' },
-  LESS_THAN_1000: {
+const PRICE = [
+  { key: 'ALL', value: 'All' },
+  { key: 'LESS_THAN_500', value: 'Less than 500.000đ' },
+  {
     key: 'LESS_THAN_1000',
     value: 'From 500.000đ to 1.000.000đ',
+    active: false,
   },
-  LESS_THAN_1500: { key: 'LESS_THAN_1500', value: '' },
-  LESS_THAN_2000: { key: 'LESS_THAN_2000', value: '' },
-  LESS_THAN_3000: { key: 'LESS_THAN_3000', value: '' },
-  MORE_THAN_3000: { key: 'MORE_THAN_3000', value: '' },
-};
+  {
+    key: 'LESS_THAN_1500',
+    value: 'From 1.000.000đ to 1.500.000đ',
+    active: false,
+  },
+  {
+    key: 'LESS_THAN_2000',
+    value: 'From 1.500.000đ to 2.000.000đ',
+    active: false,
+  },
+  {
+    key: 'LESS_THAN_3000',
+    value: 'From 2.000.000đ to 3.000.000đ',
+    active: false,
+  },
+  { key: 'MORE_THAN_3000', value: 'More than 3.000.000đ' },
+];
 
 const TableFilterTemp = (props: TableFilterTempProps) => {
   // Init
-  const { title, handleSetFilter } = props;
+  const { title, listFilter, handleSetFilter } = props;
   const [showFilter, setShowFilter] = React.useState('');
 
   // Handle click filter button
@@ -60,32 +74,56 @@ const TableFilterTemp = (props: TableFilterTempProps) => {
     }
   };
 
-  // Render condition filter
-  const renderListCondition = (type: string) => {
-    switch (type) {
-      case SIZE_CLOTHES:
-        return (
-          <div className='p-3 w-full border-2 rounded-md bg-white'>
-            <button
-              className='outline-none px-3 py-1 text-sm sm:text-base bg-gray-100 border-gray-400 border-2 rounded-md flex items-center'
-              // onClick={() => handleSetFilter(SIZE_CLOTHES, SIZE.TWO)}
-            >
-              Size 2
-            </button>
-          </div>
-        );
-
-      case COLOR_CLOTHES:
-        return (
-          <div className='p-3 border rounded-md bg-white'>COLOR_CLOTHES</div>
-        );
-
-      case PRICE_CLOTHES:
-        return <div>PRICE_CLOTHES</div>;
-
-      default:
-        return <></>;
+  // Handle change size and color
+  const handleColorOrSizeChange = (type: string, value: string) => {
+    const condition: string[] = [];
+    if (listFilter) {
+      const filter = listFilter[type];
+      if (filter === undefined || filter.length === 0) {
+        condition.push(value);
+      } else {
+        const duplicateFilter = filter.findIndex((f: any) => f === value);
+        if (duplicateFilter >= 0) {
+          condition.push(...filter.filter((f: any) => f !== value));
+        } else {
+          condition.push(...filter, value);
+        }
+      }
+    } else {
+      condition.push(value);
     }
+    handleSetFilter(type, condition);
+  };
+
+  // Handle change checkbox price
+  const handlePriceChange = (key: string) => {
+    const priceClone = [...PRICE];
+    const priceCondition: string[] = [];
+    if (key === 'ALL') {
+      const resultPrice = priceClone.map((item) => {
+        if (item.key !== 'ALL') {
+          item.active = !priceClone[0].active;
+        }
+        return item;
+      });
+      priceClone[0].active = !priceClone[0].active;
+    } else {
+      const priceItem = priceClone.find((item) => item.key === key);
+      if (priceItem) {
+        let countCheck = 0;
+        priceItem.active = !priceItem?.active;
+        priceClone.forEach((item) => {
+          if (item.active) countCheck++;
+        });
+        if (countCheck === priceClone.length - 1) {
+          priceClone[0].active = !priceClone[0].active;
+        }
+      }
+    }
+    priceClone.forEach((item) => {
+      if (item.active) priceCondition.push(item.key);
+    });
+    handleSetFilter(PRICE_CLOTHES, priceCondition);
   };
 
   return (
@@ -155,9 +193,72 @@ const TableFilterTemp = (props: TableFilterTempProps) => {
               </svg>
             </button>
           </div>
-          {renderListCondition(showFilter)}
+          {showFilter === SIZE_CLOTHES && (
+            <div className='p-3 w-full flex flex-wrap border-2 rounded-md bg-white'>
+              {SIZE.map((item) => (
+                <button
+                  key={item.key}
+                  className={`m-1 px-3 py-1 text-sm sm:text-base ${
+                    listFilter &&
+                    listFilter.size &&
+                    listFilter.size.includes(item.key)
+                      ? 'bg-black text-white border-black'
+                      : 'bg-gray-100 border-gray-400'
+                  } border-2 rounded-md flex items-center`}
+                  onClick={() =>
+                    handleColorOrSizeChange(SIZE_CLOTHES, item.key)
+                  }
+                >
+                  {item.value}
+                </button>
+              ))}
+            </div>
+          )}
+          {showFilter === COLOR_CLOTHES && (
+            <div className='p-3 w-full flex flex-wrap border-2 rounded-md bg-white'>
+              {COLOR.map((item) => (
+                <div
+                  key={item.key}
+                  className={`h-8 w-8 m-1 flex justify-center items-center ${
+                    listFilter &&
+                    listFilter.color &&
+                    listFilter.color.includes(item.key)
+                      ? `bg-${item.value} border-2 rounded-2xl`
+                      : ''
+                  }`}
+                  onClick={() =>
+                    handleColorOrSizeChange(COLOR_CLOTHES, item.key)
+                  }
+                >
+                  <div
+                    className={`h-6 w-6 bg-${item.value} border-2 rounded-xl`}
+                  ></div>
+                </div>
+              ))}
+            </div>
+          )}
+          {showFilter === PRICE_CLOTHES && (
+            <div className='p-3 w-full border-2 rounded-md bg-white'>
+              {PRICE.map((item) => (
+                <div key={item.key}>
+                  <input
+                    type='checkbox'
+                    className='mr-4'
+                    id={item.key}
+                    defaultChecked={
+                      listFilter &&
+                      listFilter.price &&
+                      listFilter.price.includes(item.key)
+                    }
+                    onChange={() => handlePriceChange(item.key)}
+                  />
+                  <label htmlFor={item.key}>{item.value}</label>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
-        <div>
+        <div className='min-w-[80px]'>
           <button className='p-3 md:p-2 rounded-lg hover:bg-gray-300'>
             <svg
               xmlns='http://www.w3.org/2000/svg'

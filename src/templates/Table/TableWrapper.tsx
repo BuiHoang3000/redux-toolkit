@@ -16,22 +16,12 @@ export const TableWrapper = (props: TableWrapperProps) => {
   const tableDispatch = useTableDispatch();
 
   // Handle event set filter
-  const handleSetFilter = (type: string, value: string) => {
-    const condition = [];
-    if (tableState.filter) {
-      const filter = tableState.filter[type];
-      const duplicateFilter = filter.findIndex((f: any) => f === value);
-      if (duplicateFilter >= 0) {
-        condition.push(filter.filter((f: any) => f !== value));
-      } else {
-        condition.push(...filter, value);
-      }
-    }
+  const handleSetFilter = (type: string, value: string[]) => {
     tableDispatch({
       type: FILTER,
       filter: {
         ...tableState.filter,
-        [type]: condition,
+        [type]: value,
       },
     });
   };
@@ -43,6 +33,7 @@ export const TableWrapper = (props: TableWrapperProps) => {
       ) : (
         <TableFilterTemp
           title={tableState.title || ''}
+          listFilter={tableState.filter}
           handleSetFilter={handleSetFilter}
         />
       )}
