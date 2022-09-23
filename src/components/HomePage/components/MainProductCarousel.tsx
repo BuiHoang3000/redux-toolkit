@@ -64,6 +64,7 @@ const MainProductCarousel = () => {
         type: INIT_DATA,
         initData: listCarousels,
         auto: true,
+        size: 0,
       });
     }
   }, [listCarousels, carouselDispatch]);

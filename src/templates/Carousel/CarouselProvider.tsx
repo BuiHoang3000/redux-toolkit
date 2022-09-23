@@ -9,8 +9,11 @@ import {
 export const INIT_DATA = 'INIT_DATA';
 export const PREVIOUS = 'PREVIOUS';
 export const NEXT = 'NEXT';
+export const PREVIOUS_NORMAL = 'PREVIOUS_NORMAL';
+export const NEXT_NORMAL = 'NEXT_NORMAL';
 export const GO_TO_PAGE = 'GO_TO_PAGE';
 export const RE_SIZE = 'RE_SIZE';
+export const SELECTED_IMAGE = 'SELECTED_IMAGE';
 
 export const FULL = 0;
 export const LARGE = 3;
@@ -26,6 +29,7 @@ export type CarouselData = {
   auto: boolean;
   timePlay?: number;
   size?: number;
+  selectedImage?: number;
 };
 
 export type CarouselReducerProps = {
@@ -34,6 +38,7 @@ export type CarouselReducerProps = {
   timePlay?: number;
   size?: number;
   goToPage?: number;
+  selectedImage?: number;
   [k: string]: any;
 };
 
@@ -105,6 +110,19 @@ export const carouselReducerFn = (
       return { ...state, current: pageCurrent };
     }
 
+    case PREVIOUS_NORMAL: {
+      const length = state.data.length;
+      const size = FULL;
+      const pageCurrent = (state.current - 1 + (length - size)) % length;
+      return { ...state, current: pageCurrent };
+    }
+
+    case NEXT_NORMAL: {
+      const length = state.data.length;
+      const pageCurrent = (state.current + 1) % length;
+      return { ...state, current: pageCurrent };
+    }
+
     case GO_TO_PAGE: {
       if (action.goToPage === null || action.goToPage === undefined) {
         throw new Error(
@@ -126,6 +144,15 @@ export const carouselReducerFn = (
       return { ...state, size: action.size, current: 0 };
     }
 
+    case SELECTED_IMAGE: {
+      if (action.selectedImage === null || action.selectedImage === undefined) {
+        throw new Error(
+          `Action type ${RE_SIZE} must go with selected image id`,
+        );
+      }
+      return { ...state, selectedImage: action.selectedImage };
+    }
+
     default:
       return state;
   }
@@ -141,6 +168,7 @@ export const CarouselContextProvider = ({
     current: 0,
     auto: false,
     timePlay: 5000,
+    selectedImage: 0,
   });
 
   return (
