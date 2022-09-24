@@ -6,7 +6,7 @@ import carousel3 from '~/assets/images/new_product_carousel_3.webp';
 import carousel4 from '~/assets/images/new_product_carousel_4.webp';
 import carousel5 from '~/assets/images/new_product_carousel_5.webp';
 import carousel6 from '~/assets/images/new_product_carousel_6.webp';
-import { WIDTH_MD } from '~/constants';
+import { WIDTH_XL } from '~/constants';
 import useWindowWide from '~/hooks/useWindowWide';
 import {
   CarouselItem,
@@ -71,7 +71,7 @@ const ListImage = React.memo((props: ListImageProps) => {
   return (
     <>
       {data.map((item: any) => (
-        <li className='relative min-w-full' key={item.id}>
+        <li className='relative min-w-full xl:min-w-[25%]' key={item.id}>
           <img src={item.url} className='w-full' />
           <div className={`text-center bottom-5 py-2 w-full`}>
             <h5 className='text-xs text-gray-500'>{item.title}</h5>
@@ -100,10 +100,10 @@ const SimilarProduct = () => {
   }, [listCarousels, carouselDispatch]);
 
   React.useEffect(() => {
-    if (width > WIDTH_MD && carouselState.size !== LARGE) {
+    if (width > WIDTH_XL && carouselState.size !== LARGE) {
       carouselDispatch({ type: RE_SIZE, size: LARGE });
     }
-    if (width < WIDTH_MD && carouselState.size !== FULL) {
+    if (width < WIDTH_XL && carouselState.size !== FULL) {
       carouselDispatch({ type: RE_SIZE, size: FULL });
     }
   }, [width, carouselState.size]);
@@ -130,7 +130,8 @@ const SimilarProduct = () => {
           className='flex relative w-full'
           style={{
             transform: `translate3d(-${
-              carouselState.current * 100
+              carouselState.current *
+              (100 / (width > WIDTH_XL ? (carouselState.size || 0) + 1 : 1))
             }%, 0px, 0px)`,
             transitionDuration: '350ms',
           }}
