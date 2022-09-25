@@ -7,7 +7,7 @@ export type CarouselItem = {
 };
 
 type CarouselGoToPageTempProps = {
-  data: any[];
+  data: CarouselItem[];
   active: number;
   setActive: (index: number) => void;
 };

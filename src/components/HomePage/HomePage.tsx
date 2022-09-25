@@ -32,7 +32,7 @@ const HomePage = () => {
         </CarouselContextProvider>
       </div>
       <div className='w-5/6 mx-auto mb-7'>
-        <h2 className='text-center font-extrabold text-2xl'>IU2000'S BLOG</h2>
+        <h2 className='text-center font-extrabold text-2xl'>{`IU2000'S BLOG`}</h2>
         <h2 className='mb-7 text-center font-extrabold text-sm'>
           CATCHING UP ON TRENDS, SHAPING THEIR STYLE
         </h2>

@@ -3,3 +3,12 @@ dist
 build
 *.css
 *.svg
+
+vite.config.ts
+
+src/axios.ts
+src/hooks/useAxios.tsx
+src/redux/selector.ts
+src/templates/Carousel/CarouselProvider.tsx
+src/templates/Table/TableFilterTemp.tsx
+src/templates/Table/TableProvider.tsx

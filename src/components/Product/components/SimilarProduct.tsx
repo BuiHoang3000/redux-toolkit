@@ -70,7 +70,7 @@ const ListImage = React.memo((props: ListImageProps) => {
 
   return (
     <>
-      {data.map((item: any) => (
+      {data.map((item: CarouselItem) => (
         <li className='relative min-w-full xl:min-w-[25%]' key={item.id}>
           <img src={item.url} className='w-full' />
           <div className={`text-center bottom-5 py-2 w-full`}>
@@ -82,6 +82,7 @@ const ListImage = React.memo((props: ListImageProps) => {
     </>
   );
 });
+ListImage.displayName = 'ListImage';
 
 const SimilarProduct = () => {
   const carouselState = useCarouselState();

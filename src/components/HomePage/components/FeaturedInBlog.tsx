@@ -58,7 +58,7 @@ const ListImage = React.memo((props: ListImageProps) => {
 
   return (
     <>
-      {data.map((item: any) => (
+      {data.map((item: CarouselItem) => (
         <li className='min-w-[50%] md:min-w-[33.33%] px-1' key={item.id}>
           <div className='h-4/5'>
             <img src={item.url} className='w-full h-full object-cover' />
@@ -71,6 +71,7 @@ const ListImage = React.memo((props: ListImageProps) => {
     </>
   );
 });
+ListImage.displayName = 'ListImage';
 
 const FeaturedInBlog = () => {
   const carouselState = useCarouselState();

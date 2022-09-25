@@ -3,7 +3,7 @@ import useWindowWide from '~/hooks/useWindowWide';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-type HeaderOnlyProps = {
+export type HeaderOnlyProps = {
   children: React.ReactElement;
 };
 

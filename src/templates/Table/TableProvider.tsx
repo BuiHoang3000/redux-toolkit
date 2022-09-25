@@ -94,18 +94,19 @@ export const TableReducerFn = (state: TableData, action: TableReducerProps) => {
 
     case PREVIOUS_PAGE: {
       if (state.current > 1) return { ...state, current: state.current - 1 };
+      break;
     }
 
     case NEXT_PAGE: {
-      if (state.current < state.total)
+      if (state.current < state.total) {
         return { ...state, current: state.current + 1 };
+      }
+      break;
     }
 
     case GO_TO_PAGE: {
       if (action.goToPage === null || action.goToPage === undefined) {
-        throw new Error(
-          `Action type ${GO_TO_PAGE} must go with page number. Error: ${action.goToPage}`,
-        );
+        throw new Error(`Action type ${GO_TO_PAGE} must go with page number`);
       }
       if (action.goToPage < 0 || action.goToPage > state.total) {
         throw new Error(

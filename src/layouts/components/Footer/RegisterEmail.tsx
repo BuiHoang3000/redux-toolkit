@@ -6,7 +6,9 @@ import { Input } from '~/templates/Input';
 const RegisterEmail = () => {
   const [email, setEmail] = React.useState('');
 
-  const handleRegister = () => {};
+  const handleRegister = () => {
+    // To do email register
+  };
 
   return (
     <div className='py-12 px-7 bg-gray-200 text-black'>

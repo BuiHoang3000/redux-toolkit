@@ -29,7 +29,7 @@ const FooterInformation = () => {
               <a href='#'>Business philosophy at IU2000 Fashion</a>
             </li>
             <li>
-              <a href='#'>IU2000's Blog</a>
+              <a href='#'>{`IU2000's Blog`}</a>
             </li>
             <li>
               <a href='#'>Recruit</a>

@@ -39,7 +39,7 @@ const TablePaginationTemp = (props: TablePaginationTempProps) => {
   };
 
   const renderPagination = () => {
-    const page: any[] = [];
+    const page = [];
     if (total <= 5) {
       for (let i = 1; i <= total; i++) {
         page.push(

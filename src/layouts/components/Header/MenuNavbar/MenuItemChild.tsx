@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import { Fragment } from 'react';
 //
-import { MenuItemChildProps } from '~/types/layout';
+import { LayoutMenuNavbar, MenuItemChildProps } from '~/types/layout';
 //
 import styles from '../Header.module.scss';
 import TreeMenuItem from './TreeMenuItem';
@@ -11,7 +11,7 @@ const cx = classNames.bind(styles);
 const MenuItemChild = ({ child }: MenuItemChildProps) => {
   return (
     <>
-      {child.map((item: any) => (
+      {child.map((item: LayoutMenuNavbar) => (
         <Fragment key={item.id}>
           {item.hasChild ? (
             <TreeMenuItem

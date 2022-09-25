@@ -39,7 +39,7 @@ const ListImage = React.memo((props: ListImageProps) => {
 
   return (
     <>
-      {data.map((item: any) => (
+      {data.map((item: CarouselItem) => (
         <li className='relative min-w-full' key={item.id}>
           <img src={item.url} className='w-full' />
           <div
@@ -53,6 +53,7 @@ const ListImage = React.memo((props: ListImageProps) => {
     </>
   );
 });
+ListImage.displayName = 'ListImage';
 
 const MainProductCarousel = () => {
   const carouselState = useCarouselState();

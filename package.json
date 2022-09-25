@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .tsx,.ts --ignore .eslintignore",
+    "lint": "eslint . --ext .tsx,.ts --ignore-pattern '.eslintignore' --ignore-pattern '.eslintrc.json'",
     "lint:fix": "yarn lint --fix"
   },
   "dependencies": {

@@ -18,7 +18,7 @@ const listOutstanding: CarouselItem[] = [
 const Outstanding = () => {
   return (
     <div className='flex relative'>
-      {listOutstanding.map((item: any) => (
+      {listOutstanding.map((item: CarouselItem) => (
         <div className='p-1 w-1/2' key={item.id}>
           <img src={item.url} className='w-full object-cover' />
           <div className={`inline-flex justify-between p-4 w-full bg-gray-200`}>

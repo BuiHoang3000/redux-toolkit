@@ -125,9 +125,7 @@ export const carouselReducerFn = (
 
     case GO_TO_PAGE: {
       if (action.goToPage === null || action.goToPage === undefined) {
-        throw new Error(
-          `Action type ${GO_TO_PAGE} must go with page number. Error: ${action.goToPage}`,
-        );
+        throw new Error(`Action type ${GO_TO_PAGE} must go with page number`);
       }
       if (action.goToPage < 0 || action.goToPage > state.data.length) {
         throw new Error(

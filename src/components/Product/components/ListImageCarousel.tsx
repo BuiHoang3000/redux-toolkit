@@ -74,6 +74,7 @@ const ListImage = React.memo((props: ListImageProps) => {
     </>
   );
 });
+ListImage.displayName = 'ListImage';
 
 const ListImageCarousel = () => {
   const carouselState = useCarouselState();

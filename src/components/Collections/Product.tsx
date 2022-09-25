@@ -72,7 +72,7 @@ const Product = () => {
     <div>
       <TableWrapper>
         <div className='flex flex-wrap'>
-          {tableState.data.map((item) => (
+          {(tableState.data as Clothes[]).map((item) => (
             <div
               className={`max-w-[50%] md:max-w-[${
                 tableState.view === 'LARGE' ? '25' : '50'
