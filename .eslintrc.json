@@ -27,5 +27,10 @@
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/no-unsafe-cal": "off",
     "@typescript-eslint/no-misused-promises": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }
