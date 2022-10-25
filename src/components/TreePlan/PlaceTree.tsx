@@ -4,24 +4,39 @@ type PlaceTreeProps = {
   id: number;
   parentId: number;
   placesById: TravelPlan;
-  onComplete: (parentId: number, id: number) => void;
+  onSetColor: (id: number, color: string) => void;
+  onDelete: (parentId: number, id: number) => void;
 };
 
 const PlaceTree = (props: PlaceTreeProps) => {
-  const { id, parentId, placesById, onComplete } = props;
+  const { id, parentId, placesById, onSetColor, onDelete } = props;
   const place = placesById[id];
   const childIds = place.childIds;
 
   return (
     <li>
-      {place.title}
+      <span style={{ color: place.color }}>{place.title}</span>
       <button
         onClick={() => {
-          onComplete(parentId, id);
+          onSetColor(id, 'red');
         }}
-        style={{ backgroundColor: 'violet' }}
       >
-        Complete
+        Red
+      </button>
+      <button
+        onClick={() => {
+          onSetColor(id, 'yellow');
+        }}
+      >
+        Yellow
+      </button>
+      <button
+        onClick={() => {
+          onDelete(parentId, id);
+        }}
+        style={{ backgroundColor: 'aqua' }}
+      >
+        Delete
       </button>
       {childIds.length > 0 && (
         <ol style={{ marginLeft: '30px', marginBottom: '10px' }}>
@@ -31,7 +46,8 @@ const PlaceTree = (props: PlaceTreeProps) => {
               id={childId}
               parentId={id}
               placesById={placesById}
-              onComplete={onComplete}
+              onSetColor={onSetColor}
+              onDelete={onDelete}
             />
           ))}
         </ol>
