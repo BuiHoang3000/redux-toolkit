@@ -1,16 +1,16 @@
-import { TravelPlan } from '.';
+import { Plan, TravelPlan } from '.';
 
 type PlaceTreeProps = {
-  id: number;
-  parentId: number;
+  id: string;
+  parentId: string;
   placesById: TravelPlan;
-  onSetColor: (id: number, color: string) => void;
-  onDelete: (parentId: number, id: number) => void;
+  onSetColor: (id: string, color: string) => void;
+  onDelete: (parentId: string, id: string) => void;
 };
 
 const PlaceTree = (props: PlaceTreeProps) => {
   const { id, parentId, placesById, onSetColor, onDelete } = props;
-  const place = placesById[id];
+  const place: Plan = placesById[id];
   const childIds = place.childIds;
 
   return (

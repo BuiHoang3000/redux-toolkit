@@ -2,335 +2,339 @@ import React from 'react';
 import PlaceTree from './PlaceTree';
 
 export type Plan = {
-  id: number;
+  id: string;
   title: string;
-  childIds: number[];
+  childIds: string[];
   color: string;
 };
 
 export type TravelPlan = {
-  [k: number]: Plan;
+  [k: string]: Plan;
 };
 
-const initialTravelPlan: TravelPlan = {
-  0: {
-    id: 0,
+const initialTravelPlan: Plan[] = [
+  {
+    id: 'a0',
     title: '(Root)',
-    childIds: [1, 43, 47],
+    childIds: ['a1', 'a43', 'a47'],
     color: '',
   },
-  1: {
-    id: 1,
+  {
+    id: 'a1',
     title: 'Earth',
-    childIds: [2, 10, 19, 27, 35],
+    childIds: ['a2', 'a10', 'a19', 'a27', 'a35'],
     color: '',
   },
-  2: {
-    id: 2,
+  {
+    id: 'a2',
     title: 'Africa',
-    childIds: [3, 4, 5, 6, 7, 8, 9],
+    childIds: ['a3', 'a4', 'a5', 'a6', 'a7', 'a8', 'a9'],
     color: '',
   },
-  3: {
-    id: 3,
+  {
+    id: 'a3',
     title: 'Botswana',
     childIds: [],
     color: '',
   },
-  4: {
-    id: 4,
+  {
+    id: 'a4',
     title: 'Egypt',
     childIds: [],
     color: '',
   },
-  5: {
-    id: 5,
+  {
+    id: 'a5',
     title: 'Kenya',
     childIds: [],
     color: '',
   },
-  6: {
-    id: 6,
+  {
+    id: 'a6',
     title: 'Madagascar',
     childIds: [],
     color: '',
   },
-  7: {
-    id: 7,
+  {
+    id: 'a7',
     title: 'Morocco',
     childIds: [],
     color: '',
   },
-  8: {
-    id: 8,
+  {
+    id: 'a8',
     title: 'Nigeria',
     childIds: [],
     color: '',
   },
-  9: {
-    id: 9,
+  {
+    id: 'a9',
     title: 'South Africa',
     childIds: [],
     color: '',
   },
-  10: {
-    id: 10,
+  {
+    id: 'a10',
     title: 'Americas',
-    childIds: [11, 12, 13, 14, 15, 16, 17, 18],
+    childIds: ['a11', 'a12', 'a13', 'a14', 'a15', 'a16', 'a17', 'a18'],
     color: '',
   },
-  11: {
-    id: 11,
+  {
+    id: 'a11',
     title: 'Argentina',
     childIds: [],
     color: '',
   },
-  12: {
-    id: 12,
+  {
+    id: 'a12',
     title: 'Brazil',
     childIds: [],
     color: '',
   },
-  13: {
-    id: 13,
+  {
+    id: 'a13',
     title: 'Barbados',
     childIds: [],
     color: '',
   },
-  14: {
-    id: 14,
+  {
+    id: 'a14',
     title: 'Canada',
     childIds: [],
     color: '',
   },
-  15: {
-    id: 15,
+  {
+    id: 'a15',
     title: 'Jamaica',
     childIds: [],
     color: '',
   },
-  16: {
-    id: 16,
+  {
+    id: 'a16',
     title: 'Mexico',
     childIds: [],
     color: '',
   },
-  17: {
-    id: 17,
+  {
+    id: 'a17',
     title: 'Trinidad and Tobago',
     childIds: [],
     color: '',
   },
-  18: {
-    id: 18,
+  {
+    id: 'a18',
     title: 'Venezuela',
     childIds: [],
     color: '',
   },
-  19: {
-    id: 19,
+  {
+    id: 'a19',
     title: 'Asia',
-    childIds: [20, 21, 22, 23, 24, 25, 26],
+    childIds: ['a20', 'a21', 'a22', 'a23', 'a24', 'a25', 'a26'],
     color: '',
   },
-  20: {
-    id: 20,
+  {
+    id: 'a20',
     title: 'China',
     childIds: [],
     color: '',
   },
-  21: {
-    id: 21,
+  {
+    id: 'a21',
     title: 'Hong Kong',
     childIds: [],
     color: '',
   },
-  22: {
-    id: 22,
+  {
+    id: 'a22',
     title: 'India',
     childIds: [],
     color: '',
   },
-  23: {
-    id: 23,
+  {
+    id: 'a23',
     title: 'Singapore',
     childIds: [],
     color: '',
   },
-  24: {
-    id: 24,
+  {
+    id: 'a24',
     title: 'South Korea',
     childIds: [],
     color: '',
   },
-  25: {
-    id: 25,
+  {
+    id: 'a25',
     title: 'Thailand',
     childIds: [],
     color: '',
   },
-  26: {
-    id: 26,
+  {
+    id: 'a26',
     title: 'Vietnam',
     childIds: [],
     color: '',
   },
-  27: {
-    id: 27,
+  {
+    id: 'a27',
     title: 'Europe',
-    childIds: [28, 29, 30, 31, 32, 33, 34],
+    childIds: ['a28', 'a29', 'a30', 'a31', 'a32', 'a33', 'a34'],
     color: '',
   },
-  28: {
-    id: 28,
+  {
+    id: 'a28',
     title: 'Croatia',
     childIds: [],
     color: '',
   },
-  29: {
-    id: 29,
+  {
+    id: 'a29',
     title: 'France',
     childIds: [],
     color: '',
   },
-  30: {
-    id: 30,
+  {
+    id: 'a30',
     title: 'Germany',
     childIds: [],
     color: '',
   },
-  31: {
-    id: 31,
+  {
+    id: 'a31',
     title: 'Italy',
     childIds: [],
     color: '',
   },
-  32: {
-    id: 32,
+  {
+    id: 'a32',
     title: 'Portugal',
     childIds: [],
     color: '',
   },
-  33: {
-    id: 33,
+  {
+    id: 'a33',
     title: 'Spain',
     childIds: [],
     color: '',
   },
-  34: {
-    id: 34,
+  {
+    id: 'a34',
     title: 'Turkey',
     childIds: [],
     color: '',
   },
-  35: {
-    id: 35,
+  {
+    id: 'a35',
     title: 'Oceania',
-    childIds: [36, 37, 38, 39, 40, 41, 42],
+    childIds: ['a36', 'a37', 'a38', 'a39', 'a40', 'a41', 'a42'],
     color: '',
   },
-  36: {
-    id: 36,
+  {
+    id: 'a36',
     title: 'Australia',
     childIds: [],
     color: '',
   },
-  37: {
-    id: 37,
+  {
+    id: 'a37',
     title: 'Bora Bora (French Polynesia)',
     childIds: [],
     color: '',
   },
-  38: {
-    id: 38,
+  {
+    id: 'a38',
     title: 'Easter Island (Chile)',
     childIds: [],
     color: '',
   },
-  39: {
-    id: 39,
+  {
+    id: 'a39',
     title: 'Fiji',
     childIds: [],
     color: '',
   },
-  40: {
-    id: 40,
+  {
+    id: 'a40',
     title: 'Hawaii (the USA)',
     childIds: [],
     color: '',
   },
-  41: {
-    id: 41,
+  {
+    id: 'a41',
     title: 'New Zealand',
     childIds: [],
     color: '',
   },
-  42: {
-    id: 42,
+  {
+    id: 'a42',
     title: 'Vanuatu',
     childIds: [],
     color: '',
   },
-  43: {
-    id: 43,
+  {
+    id: 'a43',
     title: 'Moon',
-    childIds: [44, 45, 46],
+    childIds: ['a44', 'a45', 'a46'],
     color: '',
   },
-  44: {
-    id: 44,
+  {
+    id: 'a44',
     title: 'The',
     childIds: [],
     color: '',
   },
-  45: {
-    id: 45,
+  {
+    id: 'a45',
     title: 'Config',
     childIds: [],
     color: '',
   },
-  46: {
-    id: 46,
+  {
+    id: 'a46',
     title: 'Tycho',
     childIds: [],
     color: '',
   },
-  47: {
-    id: 47,
+  {
+    id: 'a47',
     title: 'Mars',
-    childIds: [48, 49],
+    childIds: ['a48', 'a49'],
     color: '',
   },
-  48: {
-    id: 48,
+  {
+    id: 'a48',
     title: 'Corn Town',
     childIds: [],
     color: '',
   },
-  49: {
-    id: 49,
+  {
+    id: 'a49',
     title: 'Green Hill',
     childIds: [],
     color: '',
   },
-};
-
+];
 const arrayPlan: Plan[] = [
-  { id: 1, title: 'Africa', childIds: [], color: '' },
-  { id: 2, title: 'Americas', childIds: [], color: '' },
-  { id: 3, title: 'Asia', childIds: [], color: '' },
+  { id: 'a1', title: 'Africa', childIds: [], color: '' },
+  { id: 'a2', title: 'Americas', childIds: [], color: '' },
+  { id: 'a3', title: 'Asia', childIds: [], color: '' },
 ];
 
 const TreePlan = () => {
-  const [plan, setPlan] = React.useState(initialTravelPlan);
-  const [ap, setAp] = React.useState(arrayPlan);
+  const [plan, setPlan] = React.useState<TravelPlan>(
+    initialTravelPlan.reduce(
+      (travelPlan, item) => ({ ...travelPlan, [item.id]: item }),
+      {},
+    ),
+  );
+  const [ap, setAp] = React.useState<Plan[]>(arrayPlan);
 
-  const handleSetColor = (id: number, color: string) => {
+  const handleSetColor = (id: string, color: string) => {
     const current = plan[id];
     setPlan({ ...plan, [id]: { ...current, color } });
   };
 
-  const handleDelete = (parentId: number, childId: number) => {
+  const handleDelete = (parentId: string, childId: string) => {
     const parent = plan[parentId];
     const nextParent = {
       ...parent,
@@ -339,11 +343,11 @@ const TreePlan = () => {
     setPlan({ ...plan, [parentId]: nextParent });
   };
 
-  const changeColorPlan = (plan: Plan) => {
+  const changeColorPlan = (pl: Plan) => {
     setAp(
       ap.map((p) => {
-        if (plan.id === p.id) {
-          return { ...plan, color: p.color !== '' ? '' : 'brown' };
+        if (pl.id === p.id) {
+          return { ...pl, color: p.color !== '' ? '' : 'brown' };
         } else {
           return p;
         }
@@ -351,7 +355,7 @@ const TreePlan = () => {
     );
   };
 
-  const root = plan[0];
+  const root = plan['a0'];
   const planetIds = root.childIds;
 
   return (
@@ -361,20 +365,20 @@ const TreePlan = () => {
           <PlaceTree
             key={id}
             id={id}
-            parentId={0}
+            parentId={'a0'}
             placesById={plan}
             onSetColor={handleSetColor}
             onDelete={handleDelete}
           />
         ))}
       </ol>
-      {ap.map((plan) => (
+      {ap.map((p) => (
         <div
-          key={plan.id}
-          style={{ backgroundColor: plan.color, cursor: 'pointer' }}
-          onClick={() => changeColorPlan(plan)}
+          key={p.id}
+          style={{ backgroundColor: p.color, cursor: 'pointer' }}
+          onClick={() => changeColorPlan(p)}
         >
-          {plan.title}
+          {p.title}
         </div>
       ))}
     </div>
